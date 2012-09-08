@@ -86,6 +86,12 @@
     \def\ecv@cefprofkey{\ecv@utf{\scriptsize Proficient User}}
     \def\ecv@langfooterkey{\ecv@utf{\href{http://europass.cedefop.europa.eu/en/resources/european-language-levels-cefr}{Common European Framework of Reference (CEF) Level}}}
 
+    \renewcommand*\ecvCEF[2]{
+        \begin{tabular}{@{}>{\footnotesize}m{.2\ecv@langparwidth}@{\hspace{1mm}}>{\footnotesize\centering}m{.74\ecv@langparwidth}@{}}
+            #1 & #2\tabularnewline
+        \end{tabular}
+    }
+
     % Change lists bullet style to a black dot
 
     \renewcommand{\labelitemi}{$\bullet$}

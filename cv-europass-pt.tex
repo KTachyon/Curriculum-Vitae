@@ -90,6 +90,12 @@
     \def\ecv@cefprofkey{\ecv@utf{\scriptsize Utilizador Experiente}}
     \def\ecv@langfooterkey{\ecv@utf{\href{http://europass.cedefop.europa.eu/pt/resources/european-language-levels-cefr}{Nível do Quadro Europeu Comum de Referência (CECR)}}}
 
+    \renewcommand*\ecvCEF[2]{
+        \begin{tabular}{@{}>{\footnotesize}m{.2\ecv@langparwidth}@{\hspace{1mm}}>{\footnotesize\centering}m{.74\ecv@langparwidth}@{}}
+            #1 & #2\tabularnewline
+        \end{tabular}
+    }
+
     % Change lists bullet style to a black dot
 
     \renewcommand{\labelitemi}{$\bullet$}
