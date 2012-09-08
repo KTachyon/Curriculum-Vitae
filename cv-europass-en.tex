@@ -1,0 +1,300 @@
+%==================================================================================================
+% Workaround for XeTeX compilation with the 'fontspec' and 'europecv' packages
+%==================================================================================================
+
+% Pretend that the 'inputenc' package was loaded with the 'utf8x' option
+
+\makeatletter
+    \@namedef{ver@inputenc.sty}{}
+    \@namedef{opt@inputenc.sty}{utf8x}
+\makeatother
+
+\expandafter\let\csname ver@inputenc.sty \endcsname\relax
+
+% Neutralize the '\inputencoding' command used by the 'europecv' package
+
+\providecommand{\inputencoding}[1]{}
+
+
+%==================================================================================================
+% LaTeX markup to typeset a Portuguese Curriculm Vitae using the 'europecv' package
+%==================================================================================================
+
+\documentclass[a4paper,english,totpages]{europecv}
+
+\usepackage[top=1.5cm, bottom=1.5cm, left=1.5cm, right=1.5cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+
+%--------------------------------------------------------------------------------------------------
+% General configuration for the loaded packages
+%--------------------------------------------------------------------------------------------------
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Calibri}
+
+\setlist{
+    leftmargin=*,
+    nolistsep,
+    itemsep=2pt
+}
+
+\definecolor{RoyalBlue}{RGB}{65, 105, 225}
+
+\hypersetup{
+    bookmarksopen=false,
+    colorlinks=true,
+    urlcolor=RoyalBlue,
+    pdfpagemode=UseNone,
+    pdfstartview={FitH},
+    pdfdisplaydoctitle=true,
+    pdfinfo={
+        Title={Ricardo Amaral's Curriculm Vitae},
+        Author={Ricardo Amaral},
+        Subject={Curriculum Vitae typesetted in LaTeX based on the Europass model}
+    },
+    pdfcreator={TeXstudio (XeTeX)}
+}
+
+% Reduce the amount of lookahead to avoid clearing the footer on wrong pages
+
+\setcounter{LTchunksize}{1}
+
+%--------------------------------------------------------------------------------------------------
+% Allow changes to internal LaTeX macros outside packages/classes
+%--------------------------------------------------------------------------------------------------
+
+\makeatletter
+
+    % Improve 'europecv' language table and string styles
+
+    \def\ecv@mothertonguekey{\ecv@utf{\normalsize Mother Tongue}}
+    \def\ecv@assesskey{\ecv@utf{\normalsize Self-Assessment}}
+    \def\ecv@levelkey{\ecv@utf{\normalsize European Level}}
+    \def\ecv@listenkey{\vspace{2pt}\ecv@utf{\scriptsize Listening}}
+    \def\ecv@readkey{\vspace{2pt}\ecv@utf{\scriptsize Reading}}
+    \def\ecv@interactkey{\vspace{2pt}\ecv@utf{\scriptsize Spoken Interaction}}
+    \def\ecv@productkey{\vspace{2pt}\ecv@utf{\scriptsize Spoken Production}}
+    \def\ecv@cefbasickey{\ecv@utf{\scriptsize Basic User}}
+    \def\ecv@cefindepkey{\ecv@utf{{\scriptsize Independent User}}}
+    \def\ecv@cefprofkey{\ecv@utf{\scriptsize Proficient User}}
+    \def\ecv@langfooterkey{\ecv@utf{\href{http://europass.cedefop.europa.eu/en/resources/european-language-levels-cefr}{Common European Framework of Reference (CEF) Level}}}
+
+    % Change lists bullet style to a black dot
+
+    \renewcommand{\labelitemi}{$\bullet$}
+
+    % Add a blue underline to URL links
+
+    \Hy@AtBeginDocument{
+        \def\@urlbordercolor{0.06 0.3 0.55}
+        \def\@pdfborderstyle{/S/U/W 1}
+    }
+
+    % Disable the total pages number link to the last page
+
+    \def\ecv@totpages{~/~\ref*{TotPages}}
+
+\makeatother
+
+%--------------------------------------------------------------------------------------------------
+% New commands to simplify the CV content markup
+%--------------------------------------------------------------------------------------------------
+
+\newcommand{\ccvsection}[2]{\pdfbookmark{#2}{#1}\ecvsection{#2}}
+\newcommand{\ccvitem}[2]{\ecvitem[5pt]{#1}{#2}}
+
+\newcommand{\ccvattachment}[4][10pt]{\pdfbookmark{#3}{attachment#2}{\large\par\textbf{#3}}\vspace{#1} & {\par#4}\tabularnewline\nopagebreak}
+
+\newcommand{\weblink}[1]{\href{#1}{#1}}
+\newcommand{\maillink}[1]{\href{mailto:#1}{#1}}
+
+%--------------------------------------------------------------------------------------------------
+% The beginning of the actual CV document
+%--------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+    % Generic Europass CV information
+
+    \ecvfootername{Ricardo Amaral}
+    \ecvfootnote{For additional information, please visit:\newline
+        \weblink{http://pt.linkedin.com/in/rfgamaral}}
+
+    % Decrease the total number of pages by the amount of appendix pages
+
+    \addtocounter{TotPages}{-2}
+
+    % The beginning of the Europass CV content
+
+    \begin{europecv}
+
+        % Top left profile photo
+
+        & \ecvspace{-2.2cm} \raggedleft
+        \includegraphics[width=3.5cm]{graphics/profile-photo}
+        \ecvspace{-2.2cm} \tabularnewline
+
+        % Personal Information
+
+        \ccvsection{personal}{Personal Information}
+
+        \ccvitem{First Names / Surnames}{\large\textbf{Ricardo Filipe Gomes Amaral}}
+        \InputIfFileExists{includes/sensible-en}{}{
+            \ccvitem{Address}{\textit{(not shown due to privacy protection)}}
+            \ccvitem{Mobile}{\textit{(not shown due to privacy protection)}}
+            \ccvitem{Email}{\textit{(not shown due to privacy protection)}}
+        }
+        \ccvitem{Website}{\weblink{http://ricardoamaral.net}}
+        \ccvitem{Nationality}{Portuguese}
+        \ccvitem{Date of Birth}{5$^{th}$ May, 1984}
+        \ccvitem{Gender}{Male}
+
+        % Occupational Field
+
+        \tabularnewline
+        \ccvitem{\large\textbf{Occupational Field}}{\large\textbf{Software Engineering / Programmer}}
+
+        % Work Experience
+
+        \ccvsection{work}{Work Experience}
+
+        \ccvitem{Dates}{September 2011 $\longrightarrow$ Present}
+        \ccvitem{Occupation or Position Held}{\textbf{Independent Android Programmer}}
+        \ccvitem{Main Activities and Responsibilities}{Applications conception and development for the Android platform with the highest requirements for quality, achieving them with best practices and development and design standards. Currently with one application published in the Play Store named `Notification Agenda'.}
+        \ccvitem{Type of Business or Sector}{Mobile Application Development}
+
+        \tabularnewline
+
+        \ccvitem{Dates}{October 2004 $\longrightarrow$ January 2008}
+        \ccvitem{Occupation or Position Held}{\textbf{Web Developer}}
+        \ccvitem{Main Activities and Responsibilities}{Development of a content management system (CMS) including various web applications such as main content management, news management, portfolio management, online and dynamic applications form and \textit{newsletters}. This using technologies such as PHP, MySQL, HTML, CSS and JavaScript.}
+        \ccvitem{Name and Address of Employer}{HighBrand (\weblink{http://www.hb.com.pt})\newline 1700-116 Lisboa, PORTUGAL}
+        \ccvitem{Partner}{Rui Rocha (\maillink{rui.rocha@hb.com.pt})}
+        \ccvitem{Type of Business or Sector}{Software Development}
+
+        % Education and Training
+
+        \ccvsection{education}{Education and Training}
+
+        \ccvitem{Dates}{September 2005 $\longrightarrow$ July 2012}
+        \ccvitem{Title of Qualification Awarded}{\textbf{Informatics Engineering (BSc)}}
+        \ccvitem{Principal Subjects / Occupational Skills Covered}{Elements of Systems Engineering; Functional Programming; Imperative Programming; Computing Systems; Algorithms and Complexity; Computer Architectures; Calculus of Programs; Data Communications; Object-Oriented Programming; Operating Systems; Databases; Computer Graphics; Computer Communications; Development of Software Systems; Language Processing; Computer Networks; Knowledge Representation and Reasoning Systems; Distributed Systems.}
+        \ccvitem{Name and Type of Organisation Providing Education and Training}{University of Minho\newline 4710-057 Braga, PORTUGAL}
+
+        \tabularnewline
+
+        \ccvitem{Dates}{September 1999 $\longrightarrow$ July 2005}
+        \ccvitem{Title of Qualification Awarded}{\textbf{Undergraduate in a Computer Technology Course}}
+        \ccvitem{Principal Subjects / Occupational Skills Covered}{Programming Languages and Techniques; Computer Applications; Introduction to Information Technologies; Structure, Organisation and Data Processing.}
+        \ccvitem{Name and Type of Organisation Providing Education and Training}{José Régio High School\newline 4480-794 Vila do Conde, PORTUGAL}
+
+        \tabularnewline
+
+        \ccvitem{Date}{November 2003}
+        \ccvitem{Event}{\textbf{Seminar ``Entrepreneurship - Innovation in Motion''}}
+        \ccvitem{Organisation of Training}{Academy of Entrepreneurs}
+
+        % Personal Skills and Competences
+
+        \ccvsection{skills}{Personal Skills and Competences}
+
+        \ecvmothertongue{\normalsize Portuguese}
+        \tabularnewline
+
+        \ecvitem{Other Languages}{}
+        \ecvlanguageheader{(*)}
+        \ecvlanguage{English}{\ecvCOne}{\ecvCOne}{\ecvBTwo}{\ecvBTwo}{\ecvCOne}
+        \ecvlanguagefooter{(*)}
+
+        \tabularnewline
+
+        \ccvitem{Social Skills and Competences}{
+            \vspace{-12pt}
+            \begin{itemize}
+                \item Good ability to work individually or as a team with a strong sense of responsibility on any of the situations;
+                \item Ability to respond well under pressure preserving a professional rigour;
+                \item Excellent communication and argumentation ability coupled with a critical thinking;
+                \item Ability to take the initiative and make diligent careful decisions.
+            \end{itemize}
+        }
+
+        \ccvitem{Organisational Skills and Competences}{
+            \vspace{-12pt}
+            \begin{itemize}
+                \item Ability to manage projects with a sense of organization and competence;
+                \item Ease of transmission of knowledge and development methodologies;
+                \item Elevated ability for self-criticism and self-evaluation of the work performed.
+            \end{itemize}
+        }
+
+        \ccvitem{Computer Skills and Competences}{
+            \vspace{-12pt}
+            \begin{itemize}
+                \item Languages and/or Technologies (Intermediate-Advanced): PHP, C\#, Java, HTML, CSS, \mbox{JavaScript}, jQuery, JSON and SQL;
+                \item Languages and/or Technologies (Basic-Intermediate): C/C++, VB.NET, Haskell, Prolog, XML and LaTeX;
+                \item Languages and/or Technologies (Others): ASP.NET, ActionScript, Pascal, PL/SQL, UML, Razor and Swing;
+                \item Database Management Systems: MySQL, Oracle, SQL Server and SQLite;
+                \item Version Control Systems: Git and SVN;
+                \item Miscellaneous: Android SDK, OpenGL, MVC, Apache HTTP Server, Flex (Lexical Analyser Generator), Yacc (Compiler Generator) and Regular Expressions.
+            \end{itemize}
+            \\ &
+            \vspace{-12pt}
+            \begin{itemize}
+                \item Operating Systems: Microsoft Windows, Mac OS X and Linux;
+                \item Integrated Development Environments: Microsoft Visual Studio, Eclipse, NetBeans and Oracle SQL Developer;
+                \item Productivity Software: Microsoft Office, OpenOffice/LibreOffice, Adobe Photoshop, Adobe Illustrator, Adobe Lightroom, Adobe Premiere Pro, Adobe After Effects, Adobe Flash and Adobe Dreamweaver;
+                \item Computational Software: Mathematica, MATLAB.
+            \end{itemize}
+        }
+
+        \ccvitem{Artistic Skills and Competences}{
+            \vspace{-12pt}
+            \begin{itemize}
+                \item Photography.
+            \end{itemize}
+        }
+
+        \ccvitem{Other Skills and Competences}{
+            \vspace{-12pt}
+            \begin{itemize}
+                \item Ease of learning and research autonomously.
+            \end{itemize}
+        }
+
+        \ccvitem{Driving License}{B Category}
+
+        % Additional Information
+
+        \ccvsection{extra}{Additional Information}
+
+        \ccvitem{Publications}{}
+        \ccvitem{}{«Basic templating system in PHP», PROGRAMAR Magazine (9$^{th}$ Edition), \href{http://www.portugal-a-programar.pt}{Portugal-a-Programar} Community, July 2007.}
+
+        \ccvitem{Programming Contests}{}
+        \ccvitem{}{«androidPT Programming Contest», Notification Agenda Application, 2$^{nd}$ Place, \href{http://www.androidpt.com}{AndroidPT} Community, November 2011.}
+        \ccvitem{}{«Programming Tournament for High School Students (ToPAS)», 3$^{rd}$ Place, Department of Computer Science, Faculty of Sciences of University of Porto, May 2005.}
+        \ccvitem{}{«Programming Tournament for High School Students (ToPAS)», 4$^{th}$ Place, Department of Computer Science, Faculty of Sciences of University of Porto, May 2004.}
+
+        % Appendices
+
+        \ccvsection{appendices}{Appendices}
+
+        \ccvitem{Appendix I}{Personal Projects Developed}
+        \ccvitem{Appendix II}{University Projects Developed}
+
+        \newpage
+
+        % Insert the projects file contents in the document
+
+        \input{includes/projects-en}
+
+    \end{europecv}
+
+\end{document}

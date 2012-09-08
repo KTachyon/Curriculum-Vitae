@@ -1,0 +1,8 @@
+# Sensible Information
+*sensible*.tex
+
+# LaTeX Auxiliary
+*.aux
+*.log
+*.out
+*.synctex.gz
