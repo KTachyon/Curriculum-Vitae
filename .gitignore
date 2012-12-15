@@ -6,3 +6,7 @@
 *.log
 *.out
 *.synctex.gz
+
+# Custom CV
+*.indd
+*.eps
