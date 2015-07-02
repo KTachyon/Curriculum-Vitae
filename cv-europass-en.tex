@@ -17,7 +17,7 @@
 
 
 %==================================================================================================
-% LaTeX markup to typeset a Portuguese Curriculm Vitae using the 'europecv' package
+% LaTeX markup to typeset a Curriculm Vitae using the 'europecv' package
 %==================================================================================================
 
 \documentclass[a4paper,english,totpages]{europecv}
@@ -32,12 +32,13 @@
 \usepackage{xcolor}
 
 
+
 %--------------------------------------------------------------------------------------------------
 % General configuration for the loaded packages
 %--------------------------------------------------------------------------------------------------
 
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Calibri}
+\setmainfont{Arial}
 
 \setlist{
     leftmargin=*,
@@ -55,11 +56,11 @@
     pdfstartview={FitH},
     pdfdisplaydoctitle=true,
     pdfinfo={
-        Title={Ricardo Amaral's Curriculm Vitae},
-        Author={Ricardo Amaral},
+        Title={Tiago Fael Matos' Curriculm Vitae},
+        Author={Tiago Fael Matos},
         Subject={Curriculum Vitae typesetted in LaTeX based on the Europass model}
     },
-    pdfcreator={TeXstudio (XeTeX)}
+    pdfcreator={XeLaTeX}
 }
 
 % Reduce the amount of lookahead to avoid clearing the footer on wrong pages
@@ -71,6 +72,10 @@
 %--------------------------------------------------------------------------------------------------
 
 \makeatletter
+
+    % Improve document title style
+
+    \renewcommand*\ecvtitle{\ecv@utf{\Large\textbf{Curriculum Vitae}\\[5pt]\Large\textbf{Europass}}}
 
     % Improve 'europecv' language table and string styles
 
@@ -100,7 +105,7 @@
 
     \Hy@AtBeginDocument{
         \def\@urlbordercolor{0.06 0.3 0.55}
-        \def\@pdfborderstyle{/S/U/W 1}
+        \def\@pdfborderstyle{0}
     }
 
     % Disable the total pages number link to the last page
@@ -129,9 +134,9 @@
 
     % Generic Europass CV information
 
-    \ecvfootername{Ricardo Amaral}
+    \ecvfootername{Tiago Fael Matos}
     \ecvfootnote{To connect with me on LinkedIn, please visit:\newline
-        \weblink{http://www.linkedin.com/in/rfgamaral}}
+        \weblink{http://www.linkedin.com/in/ktachyon}}
 
     % Decrease the total number of pages by the amount of appendix pages
 
@@ -144,68 +149,132 @@
         % Top left profile photo
 
         & \ecvspace{-2.2cm} \raggedleft
-        \includegraphics[width=3.5cm]{graphics/profile-photo.jpg}
+        \includegraphics[width=3.5cm]{graphics/photo}
         \ecvspace{-2.2cm} \tabularnewline
 
         % Personal Information
 
         \ccvsection{personal}{Personal Information}
 
-        \ccvitem{First Names / Surnames}{\large\textbf{Ricardo Filipe Gomes Amaral}}
+        \ccvitem{First Names / Surnames}{\large\textbf{Tiago Fael Gonçalves de Matos}}
         \InputIfFileExists{includes/sensible-en}{}{
             \ccvitem{Address}{\textit{(not shown due to privacy protection)}}
             \ccvitem{Mobile}{\textit{(not shown due to privacy protection)}}
             \ccvitem{Email}{\textit{(not shown due to privacy protection)}}
         }
-        \ccvitem{Website}{\weblink{http://ricardoamaral.net}}
+        \ccvitem{Twitter}{\weblink{http://twitter.com/KTachyon}}
         \ccvitem{Nationality}{Portuguese}
-        \ccvitem{Date of Birth}{5$^{th}$ May, 1984}
+        \ccvitem{Date of Birth}{16$^{th}$ September, 1985}
         \ccvitem{Gender}{Male}
 
         % Occupational Field
 
         \tabularnewline
-        \ccvitem{\large\textbf{Occupational Field}}{\large\textbf{Software Engineering / Programmer}}
+        \ccvitem{\large\textbf{Occupational Field}}{\large\textbf{Software Engineering}}
 
         % Work Experience
 
         \ccvsection{work}{Work Experience}
 
-        \ccvitem{Dates}{September 2011 $\longrightarrow$ August 2014}
-        \ccvitem{Occupation or Position Held}{\textbf{Android Developer} \textit{(Self-Employed)}}
-        \ccvitem{Main Activities and Responsibilities}{Independent development of applications for the Android platform, employing the best development practices and design patterns. With accountability for distribution on Google Play and marketing on Social/Ad networks.}
-        \ccvitem{Type of Business or Sector}{Mobile Application Development}
+        \ccvitem{Dates}{October 2014 $\longrightarrow$ now}
+        \ccvitem{Occupation or Position Held}{\textbf{iOS Software Engineer, Fullstack Software Engineer}}
+        \ccvitem{Main Activities and Responsibilities}{
+            \begin{itemize}
+                \item Development and optimization of components for the JiTT app (\weblink{https://itunes.apple.com/artist/iclio/id418757745});
+                \item Full integration of Viator into the JiTT app (UI, logic and API communication);
+                \item Development of a NodeJS based REST API;
+                \item Development of a Backbone-based web client for the aforementioned API;
+            \end{itemize}
+        }
+        \ccvitem{Name and Address of Employer}{iClio (\weblink{http://www.iclio.net})}
+        \ccvitem{Type of Business or Sector}{Digital Tourism, Content Platform}
 
         \tabularnewline
 
-        \ccvitem{Dates}{October 2004 $\longrightarrow$ January 2008}
-        \ccvitem{Occupation or Position Held}{\textbf{Web Developer}}
-        \ccvitem{Main Activities and Responsibilities}{Freelance and remote work on several websites for third party clients with custom front-end development solutions, website deployment to a production server and website maintenance when required.}
-        \ccvitem{Name and Address of Employer}{HighBrand (\weblink{http://www.hb.com.pt})\newline 1700-116 Lisboa, PORTUGAL}
-        \ccvitem{Partner}{Rui Rocha (\maillink{rui.rocha@hb.com.pt})}
-        \ccvitem{Type of Business or Sector}{Software Development}
+        \ccvitem{Dates}{December 2012 $\longrightarrow$ October 2014}
+        \ccvitem{Occupation or Position Held}{\textbf{Software Engineer}}
+        \ccvitem{Main Activities and Responsibilities}{
+            \begin{itemize}
+                \item Development of an Android app and web services for management of parking meters;
+                \item Development of an e-learning web application platform;
+                \item Development of a Backbone-based framework for faster single-page web application development;
+                \item Development of a platform for building web-based interactive books;
+                \item Development of iOS and Android apps for paying paid parking spaces;
+                \item Development of an iOS app for counting the time spent inside geofences and with iBeacon support;
+            \end{itemize}
+        }
+        \ccvitem{Name and Address of Employer}{Premium Minds (\weblink{http://www.premium-minds.com})}
+        \ccvitem{Type of Business or Sector}{Web and Mobile Software Development}
+
+        \tabularnewline
+
+        \ccvitem{Dates}{December 2012 $\longrightarrow$ July 2012}
+        \ccvitem{Occupation or Position Held}{\textbf{Software Engineer}}
+        \ccvitem{Main Activities and Responsibilities}{
+            \begin{itemize}
+                \item Development of the iOS app for Limetree (\weblink{http://limetr.ee});
+                \item Web frontend development and payment systems integration;
+                \item Participated with Limetree in Ryan Academy's Propeller Venture Accelerator in Dublin.
+            \end{itemize}
+        }
+        \ccvitem{Name and Address of Employer}{Limetree (\weblink{http://limetr.ee})}
+        \ccvitem{Type of Business or Sector}{Web and Mobile Web Software Development}
+
+        \tabularnewline
+
+        \ccvitem{Dates}{September 2010 $\longrightarrow$ October 2012}
+        \ccvitem{Occupation or Position Held}{\textbf{Systems Administrator and Software Engineer}}
+        \ccvitem{Main Activities and Responsibilities}{
+            \begin{itemize}
+                \item Development and management of UCV (\weblink{http://ucv.uc.pt}) based on an open source, Pylons-based video platform called MediaCore;
+                \item Development of both UCV mobile applications for iOS (\weblink{http://itunes.apple.com/pt/app/ucv/id516297795}) and Android (\weblink{https://play.google.com/store/apps/details?id=pt.uc.ucv});
+                \item Development of some support (web based) platforms for University of Coimbra's presence in iTunes U (\weblink{http://www.uc.pt/itunesU/coleccoes});
+                \item Configuration of several key systems that support University of Coimbra's presence in iTunes U, one of those a dual-controller SAN connected to two Mac Pro's to be used as main and failover/failback controllers;
+                \item Development and management of Agenda7 (\weblink{http://agenda7.uc.pt});
+                \item Consultant on the HPIP project (\weblink{http://hpip.org});
+                \item Remote management/administration of a dozen servers with CentOS, Fedora Core and Mac OS X Server operating systems.
+            \end{itemize}
+        }
+        \ccvitem{Name and Address of Employer}{University of Coimbra (\weblink{http://www.uc.pt})}
+        \ccvitem{Type of Business or Sector}{Higher education institution}
+
+        \tabularnewline
+
+        \ccvitem{Dates}{January 2010 $\longrightarrow$ May 2011}
+        \ccvitem{Occupation or Position Held}{\textbf{iOS Developer}}
+        \ccvitem{Main Activities and Responsibilities}{Development of iOS applications for major sporting events, where I developed 3 iOS applications:
+            \begin{itemize}
+                \item 2010 FIFA World Cup (ZA2010);
+                \item 2010 FIBA World Cup (TR2010);
+                \item 2011 AFC Asian Cup (QA2011);
+            \end{itemize}
+        The apps were taken off the app store since they were no longer relevant.}
+        \ccvitem{Name and Address of Employer}{MajorSportsEvents (\weblink{http://www.majorsportsevents.com})}
+        \ccvitem{Type of Business or Sector}{Mobile Software Development}
+
+        \tabularnewline
+
+        \ccvitem{Dates}{July 2010 $\longrightarrow$ September 2010}
+        \ccvitem{Occupation or Position Held}{\textbf{iOS Developer}}
+        \ccvitem{Main Activities and Responsibilities}{Development of iOS applications and server-side services. Developed components for the JiTT application for iOS.}
+        \ccvitem{Name and Address of Employer}{iClio Lda. (\weblink{http://www.iclio.net}, \weblink{http://www.justintimetourist.com})\newline IPN - Instituto Pedro Nunes\newline Rua Pedro Nunes, s/n\newline 3030-199 Coimbra, Portugal}
+        \ccvitem{Type of Business or Sector}{Mobile Software Development}
 
         % Education and Training
 
         \ccvsection{education}{Education and Training}
 
-        \ccvitem{Dates}{September 2005 $\longrightarrow$ July 2012}
-        \ccvitem{Title of Qualification Awarded}{\textbf{Informatics Engineering (BSc)}}
-        \ccvitem{Principal Subjects / Occupational Skills Covered}{Elements of Systems Engineering; Functional Programming; Imperative Programming; Computing Systems; Algorithms and Complexity; Computer Architectures; Calculus of Programs; Data Communications; Object-Oriented Programming; Operating Systems; Databases; Computer Graphics; Computer Communications; Development of Software Systems; Language Processing; Computer Networks; Knowledge Representation and Reasoning Systems; Distributed Systems.}
-        \ccvitem{Name and Type of Organisation Providing Education and Training}{University of Minho\newline 4710-057 Braga, PORTUGAL}
+        \ccvitem{Dates}{September 2010 $\longrightarrow$ July 2012}
+        \ccvitem{Title of Qualification Awarded}{\textbf{Master's Degree in Informatics Engineering (MSc)}}
+        \ccvitem{Principal Subjects / Occupational Skills Covered}{Network Engineering; Business Management; Management of Software Projects; Systems and Network Management; Enterprise Application Integration; Human-Computer Interaction; Software Reuse; Security in Communication Systems; Ubiquitous Systems; Semantic Web.}
+        \ccvitem{Name and Type of Organisation Providing Education and Training}{Faculty of Sciences and Technology of the University of Coimbra, Department of Informatics Engineering}
 
         \tabularnewline
 
-        \ccvitem{Dates}{September 1999 $\longrightarrow$ July 2005}
-        \ccvitem{Title of Qualification Awarded}{\textbf{Undergraduate in a Computer Technology Course}}
-        \ccvitem{Principal Subjects / Occupational Skills Covered}{Programming Languages and Techniques; Computer Applications; Introduction to Information Technologies; Structure and Organisation and Data Processing.}
-        \ccvitem{Name and Type of Organisation Providing Education and Training}{José Régio High School\newline 4480-794 Vila do Conde, PORTUGAL}
-
-        \tabularnewline
-
-        \ccvitem{Date}{November 2003}
-        \ccvitem{Event}{\textbf{Seminar ``Entrepreneurship - Innovation in Motion''}}
-        \ccvitem{Organisation of Training}{Academy of Entrepreneurs}
+        \ccvitem{Dates}{September 2003 $\longrightarrow$ July 2010}
+        \ccvitem{Title of Qualification Awarded}{\textbf{Bachelor Degree in Informatics Engineering (BSc)}}
+        \ccvitem{Principal Subjects / Occupational Skills Covered}{Algorithms and Data Structures; Data Analysis and Transformation; Computer Architectures; Databases; Compilers; Graphic Computing; Software Engineering; Discrete Structures; Introduction to Artificial Intelligence; Introduction to Programming and Problem Solving; Introduction to Communication Networks; Advanced Programming Laboratory; Principles of Procedural Programming; Object Oriented Programming; Communication Protocols; Simulation and Scientific Computing; Information Systems; Distributed Systems; Operating Systems; Computer Technologies; Theory of Computing; Information Theory.}
+        \ccvitem{Name and Type of Organisation Providing Education and Training}{Faculty of Sciences and Technology of the University of Coimbra, Department of Informatics Engineering}
 
         % Personal Skills and Competences
 
@@ -216,84 +285,70 @@
 
         \ecvitem{Other Languages}{}
         \ecvlanguageheader{(*)}
-        \ecvlanguage{English}{\ecvCOne}{\ecvCOne}{\ecvBTwo}{\ecvBTwo}{\ecvCOne}
+        \ecvlanguage{English}{\ecvCTwo}{\ecvCOne}{\ecvBTwo}{\ecvBTwo}{\ecvCOne}
         \ecvlanguagefooter{(*)}
 
         \tabularnewline
 
-        \ccvitem{Social Skills and Competences}{
+        \ccvitem{iOS Development Skills}{
             \vspace{-12pt}
             \begin{itemize}
-                \item Good ability to work individually or as a team with a strong sense of responsibility on any of the situations;
-                \item Ability to respond well under pressure preserving a professional rigour;
-                \item Excellent communication and argumentation ability coupled with a critical thinking;
-                \item Ability to take the initiative and make diligent careful decisions.
+                \item Development of Universal apps (single binary for iPhone and iPad);
+                \item Development of interfaces using XIBs, Storyboards and linking multiple Storyboards;
+                \item Understanding of the Objective-C Runtime and knowledge about concepts such as method swizzling and runtime subclassing;
+                \item Understanding when the use of Class Extensions, Categories and Protocols;
+                \item Asynchronous code development using Grand Central Dispatch;
+                \item Development using Lockless Exclusive Accessors using Grand Central Dispatch;
+                \item Creating distinct products using the same base project in XCode via Schemes and custom build processes;
+                \item Third party dependency management using CocoaPods;
+                \item Dependency Injection using Objection framework for creating more modular applications;
+                \item Development using PromiseKit for chained asynchronous calls;
+                \item Development using AFNetworking and communicating with REST applications using that framework;
+                \item Using logging facilities such as CocoaLumberjack and NSLogger to distribute logs across several local and remote services;
+                \item Development of apps using services such as Crashlytics, Parse and SegmentIO;
+                \item Development of apps using the CoreLocation framework, including background location apps;
+                \item Development of apps with iBeacon support;
+                \item Using the StoreKit for in-app purchases;
+                \item Adding Push Notifications to an iOS app;
+                \item Deploying iOS apps to the App Store;
             \end{itemize}
         }
 
-        \ccvitem{Organisational Skills and Competences}{
+        \ccvitem{JavaScript/NodeJS Development Skills}{
             \vspace{-12pt}
             \begin{itemize}
-                \item Ability to manage projects with a sense of organization and competence;
-                \item Ease of transmission of knowledge and development methodologies;
-                \item Elevated ability for self-criticism and self-evaluation of the work performed.
+                \item Frontend development using Backbone.js;
+                \item Development using the Pub-Sub pattern;
+                \item Callbacks and promises;
+                \item Development of extendable JavaScript objects (pre-ES6);
+                \item Backend development (NodeJS and io.js);
+                \item Express.js middleware and promisification of Express.js routes;
+                \item Understands the Event-driven of JavaScript and what IO blocking means;
+                \item Database transaction assurance on Express.js;
+                \item Development using JavaScript promises;
+                \item Using NPM for dependency management;
             \end{itemize}
         }
 
-        \ccvitem{Computer Skills and Competences}{
+        \ccvitem{Other Skills}{
             \vspace{-12pt}
             \begin{itemize}
-                \item Languages and/or Technologies (Intermediate-Advanced): PHP, C\#, Java, HTML, CSS, \mbox{JavaScript}, jQuery, JSON and SQL;
-                \item Languages and/or Technologies (Basic-Intermediate): C/C++, VB.NET, Haskell, Prolog, XML and LaTeX;
-                \item Languages and/or Technologies (Others): ASP.NET, ActionScript, Pascal, PL/SQL, UML, Razor and Swing;
-                \item Database Management Systems: MySQL, Oracle, SQL Server and SQLite;
-                \item Version Control Systems: Git and SVN;
-                \item Miscellaneous: Android SDK, OpenGL, MVC, Apache HTTP Server, Flex (Lexical Analyser Generator), Yacc (Compiler Generator) and Regular Expressions.
-            \end{itemize}
-            \\ &
-            \vspace{-12pt}
-            \begin{itemize}
-                \item Operating Systems: Microsoft Windows, Mac OS X and Linux;
-                \item Integrated Development Environments: Microsoft Visual Studio, Eclipse, NetBeans and Oracle SQL Developer;
-                \item Productivity Software: Microsoft Office, OpenOffice/LibreOffice, Adobe Photoshop, Adobe Illustrator, Adobe Lightroom, Adobe Premiere Pro, Adobe After Effects, Adobe Flash and Adobe Dreamweaver;
-                \item Computational Software: Mathematica and MATLAB.
+                \item SQL (MySQL, Postgres), No-SQL (Postgres HStores and JSON data);
+                \item N-Tiered architecure platforms development;
+                \item Integration with REST WebServices;
+                \item REST API development;
+                \item Some Redis and MongoDB experience;
+                \item Integration of analytics platforms;
+                \item Aims for DRY and decoupled code;
             \end{itemize}
         }
-
-        \ccvitem{Artistic Skills and Competences}{
-            \vspace{-12pt}
-            \begin{itemize}
-                \item Photography.
-            \end{itemize}
-        }
-
-        \ccvitem{Other Skills and Competences}{
-            \vspace{-12pt}
-            \begin{itemize}
-                \item Ease of learning and research autonomously.
-            \end{itemize}
-        }
-
-        \ccvitem{Driving License}{B Category}
-
-        % Additional Information
-
-        \ccvsection{extra}{Additional Information}
-
-        \ccvitem{Publications}{}
-        \ccvitem{}{«Basic templating system in PHP», PROGRAMAR Magazine (9$^{th}$ Edition), \href{http://www.portugal-a-programar.pt}{Portugal-a-Programar} Community, July 2007.}
-
-        \ccvitem{Programming Contests}{}
-        \ccvitem{}{«androidPT Programming Contest», Notification Agenda Application, 2$^{nd}$ Place, \href{http://www.androidpt.com}{AndroidPT} Community, November 2011.}
-        \ccvitem{}{«Programming Tournament for High School Students (ToPAS)», 3$^{rd}$ Place, Department of Computer Science, Faculty of Sciences of University of Porto, May 2005.}
-        \ccvitem{}{«Programming Tournament for High School Students (ToPAS)», 4$^{th}$ Place, Department of Computer Science, Faculty of Sciences of University of Porto, May 2004.}
 
         % Appendices
 
         \ccvsection{appendices}{Appendices}
 
         \ccvitem{Appendix I}{Personal Projects Developed}
-        \ccvitem{Appendix II}{University Projects Developed}
+        \ccvitem{Appendix II}{Academic Projects Developed}
 
         \newpage
 
